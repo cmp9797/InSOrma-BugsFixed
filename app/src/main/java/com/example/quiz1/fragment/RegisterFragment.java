@@ -6,6 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +20,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.quiz1.HomeActivity;
+import com.example.quiz1.MainActivity;
+import com.example.quiz1.ProfileActivity;
 import com.example.quiz1.R;
 import com.example.quiz1.data.UserData;
 import com.example.quiz1.models.User;
+import com.google.android.material.tabs.TabLayout;
 
 import org.w3c.dom.Text;
 
@@ -52,6 +60,11 @@ public class RegisterFragment extends Fragment {
         edtPhoneNum = view.findViewById(R.id.edtPhoneRegister);
         edtPassword = view.findViewById(R.id.edtPasswordRegister);
         btnRegister = view.findViewById(R.id.buttonRegister);
+
+        edtUsername.setText("xcom");
+        edtEmailAddress.setText("x.com");
+        edtPhoneNum.setText("123");
+        edtPassword.setText("x1");
 
         btnRegister.setOnClickListener(v -> {
             boolean flag = true;
@@ -103,7 +116,7 @@ public class RegisterFragment extends Fragment {
             if (flag == true) {
 
                 int id;
-                if(userData.getVectUser().isEmpty()) {
+                if (userData.getVectUser().isEmpty()) {
                     id = 1;
                 } else {
                     id = userData.getVectUser().lastElement().getId() + 1;
@@ -112,8 +125,12 @@ public class RegisterFragment extends Fragment {
                 User userAdded = new User(id, email, username, phoneNum, password);
                 userData.getVectUser().add(userAdded);
                 Toast.makeText(getActivity(), "Succesfully Registered!", Toast.LENGTH_LONG).show();
-            }
 
+//                FragmentTransaction ft = getFragmentManager().beginTransaction().replace(R.id.inViewPager, new LoginFragment());
+//                ft.commit();
+
+
+            }
 
         });
 

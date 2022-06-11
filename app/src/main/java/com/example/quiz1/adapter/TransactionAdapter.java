@@ -1,4 +1,4 @@
-package com.example.quiz1;
+package com.example.quiz1.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +8,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quiz1.R;
 import com.example.quiz1.models.Transaction;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
 
-    public  TransactionAdapter(Vector<Transaction> vectTransaction) {
-        this.vectTransaction = vectTransaction;
+    int totalPrice;
+
+//    public  TransactionAdapter(Vector<Transaction> vectTransaction) {
+//        this.vectTransaction = vectTransaction;
+//    }
+
+//    private Vector<Transaction> vectTransaction = new Vector<>();
+
+
+    public  TransactionAdapter(List<Transaction> listTransaction) {
+        this.listTransaction = listTransaction;
     }
 
-    private Vector<Transaction> vectTransaction = new Vector<>();
+    private List<Transaction> listTransaction = new ArrayList<>();
 
     @NonNull
     @Override
@@ -30,16 +41,16 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull TransactionAdapter.ViewHolder holder, int position) {
 
-        holder.tvId.setText(String.valueOf(vectTransaction.get(position).getId()));
-        holder.tvName.setText(vectTransaction.get(position).getName());
-        holder.tvQuantity.setText(String.valueOf(vectTransaction.get(position).getQuantity()));
-        holder.tvTotal.setText(String.valueOf(vectTransaction.get(position).getPrice()));
-        holder.tvDate.setText(vectTransaction.get(position).getDate());
+        holder.tvId.setText(String.valueOf(listTransaction.get(position).getId()));
+        holder.tvName.setText(listTransaction.get(position).getProductId());
+        holder.tvQuantity.setText(String.valueOf(listTransaction.get(position).getQuantity()));
+        holder.tvTotal.setText(String.valueOf(listTransaction.get(position).getQuantity()));
+        holder.tvDate.setText(listTransaction.get(position).getTransactionDate());
     }
 
     @Override
     public int getItemCount() {
-        return vectTransaction.size();
+        return listTransaction.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

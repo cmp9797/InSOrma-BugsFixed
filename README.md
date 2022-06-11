@@ -1,2 +1,0 @@
-# InSOrma
-Projek kesayangan kami

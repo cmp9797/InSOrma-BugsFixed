@@ -20,18 +20,20 @@
 
     <Button
         android:id="@+id/btnEditProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="343dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="30dp"
-        android:text="edit"
+        android:drawableLeft="@drawable/ic_baseline_edit_24"
+        android:textAlignment="center"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/Profile"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvEmailProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -47,18 +49,20 @@
         android:layout_marginTop="10dp"
         android:text="0123456789"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/tvEmailProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailProfile" />
 
     <EditText
         android:id="@+id/Profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="288dp"
+        android:layout_height="48dp"
         android:layout_marginTop="150dp"
         android:ems="10"
         android:hint="New Username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="@+id/tvPhoneProfile"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneProfile" />
 
@@ -68,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:text="Edit your username here :"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Profile"
         app:layout_constraintStart_toStartOf="@+id/Profile" />
 
@@ -75,19 +80,25 @@
         android:id="@+id/btnDeleteProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#E91E1E"
         android:text="delete account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/Profile"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogoutProfile" />
 
     <Button
         android:id="@+id/btnLogoutProfile"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:backgroundTint="#E91E1E"
+        android:layout_marginTop="200dp"
+        android:backgroundTint="#FFFFFF"
         android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnEditProfile" />
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Profile" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,9 +8,11 @@ public class UserData {
     private static Vector<User> vectUser = new Vector<>();
     private static User loggedIn = null;
 
+
     public static Vector<User> getVectUser() {
         return vectUser;
     }
+
 
     public static void setVectUser(Vector<User> vectUser) {
         UserData.vectUser = vectUser;

@@ -2,26 +2,28 @@ package com.example.quiz1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.MotionEvent;
 
+import com.example.quiz1.adapter.FurnitureAdapter;
 import com.example.quiz1.data.FurnitureData;
+import com.example.quiz1.data.TransactionData;
 import com.example.quiz1.data.UserData;
 
 public class HomeActivity extends AppCompatActivity {
 
     FurnitureData furnitureData;
     UserData userData;
+    TransactionData transactionData;
     RecyclerView rvFurniture;
     FurnitureAdapter furnitureAdapter;
 
@@ -39,6 +41,24 @@ public class HomeActivity extends AppCompatActivity {
         rvFurniture.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvFurniture.setAdapter(furnitureAdapter);
 
+        rvFurniture.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
     }
 
     @Override
@@ -55,11 +75,19 @@ public class HomeActivity extends AppCompatActivity {
                 Log.wtf("test", "Masuk Home");
                 break;
             case R.id.profile :
-                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                Intent intent = new Intent(this, ProfileActivity.class);
+                intent.putExtra("username", userData.getLoggedIn().getUsername());
+                intent.putExtra("email", userData.getLoggedIn().getEmailAddress());
+                intent.putExtra("phone", userData.getLoggedIn().getPhoneNum());
+                startActivity(intent);
                 Log.wtf("test", "Masuk Profile");
                 break;
             case R.id.history :
-                startActivity(new Intent(HomeActivity.this, HistoryActivity.class));
+                Intent intent2 = new Intent(this, HistoryActivity.class);
+                int userId = userData.getLoggedIn().getId();
+                intent2.putExtra("userId", userData.getLoggedIn().getId());
+                intent2.putExtra("listTransaction", (Parcelable) transactionData.getListPersonTransaction(userId));
+                startActivity(intent2);
                 Log.wtf("test", "Masuk History");
                 break;
         }

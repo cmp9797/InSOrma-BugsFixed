@@ -1,18 +1,24 @@
 package com.example.quiz1.models;
 
 public class Transaction {
-    private int id;
-    private String name;
-    private int quantity;
-    private int price;
-    private String date;
+//    private int id;
+//    private String name;
+//    private int quantity;
+//    private int price;
+//    private String date;
 
-    public Transaction(int id, String name, int quantity, int price, String date) {
+    private int id;
+    private int userId;
+    private int productId;
+    private String transactionDate;
+    private int quantity;
+
+    public Transaction(int id, int userId, int productId, String transactionDate, int quantity) {
         this.id = id;
-        this.name = name;
+        this.userId = userId;
+        this.productId = productId;
+        this.transactionDate = transactionDate;
         this.quantity = quantity;
-        this.price = price;
-        this.date = date;
     }
 
     public int getId() {
@@ -23,12 +29,28 @@ public class Transaction {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(String transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
     public int getQuantity() {
@@ -37,21 +59,5 @@ public class Transaction {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 }
