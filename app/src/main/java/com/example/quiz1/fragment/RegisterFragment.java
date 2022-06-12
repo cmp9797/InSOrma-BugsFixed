@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.quiz1.HistoryActivity;
 import com.example.quiz1.HomeActivity;
 import com.example.quiz1.MainActivity;
 import com.example.quiz1.ProfileActivity;
