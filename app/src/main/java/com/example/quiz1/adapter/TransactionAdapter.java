@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quiz1.R;
+import com.example.quiz1.data.FurnitureData;
 import com.example.quiz1.models.Transaction;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
 
+    private List<Transaction> listTransaction;
     int totalPrice;
 
 //    public  TransactionAdapter(Vector<Transaction> vectTransaction) {
@@ -29,8 +31,6 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         this.listTransaction = listTransaction;
     }
 
-    private List<Transaction> listTransaction = new ArrayList<>();
-
     @NonNull
     @Override
     public TransactionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,11 +41,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull TransactionAdapter.ViewHolder holder, int position) {
 
-        holder.tvId.setText(String.valueOf(listTransaction.get(position).getId()));
-        holder.tvName.setText(listTransaction.get(position).getProductId());
+        holder.tvId.setText(Integer.toString(listTransaction.get(position).getId()));
+        listTransaction.get(position).getProductId();
+        holder.tvName.setText(Integer.toString(listTransaction.get(position).getProductId()));
         holder.tvQuantity.setText(String.valueOf(listTransaction.get(position).getQuantity()));
         holder.tvTotal.setText(String.valueOf(listTransaction.get(position).getQuantity()));
-        holder.tvDate.setText(listTransaction.get(position).getTransactionDate());
+        holder.tvDate.setText(String.valueOf(listTransaction.get(position).getTransactionDate()));
     }
 
     @Override

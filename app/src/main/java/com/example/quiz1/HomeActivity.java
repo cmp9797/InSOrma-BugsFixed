@@ -41,23 +41,6 @@ public class HomeActivity extends AppCompatActivity {
         rvFurniture.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvFurniture.setAdapter(furnitureAdapter);
 
-        rvFurniture.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
 
     }
 
@@ -86,7 +69,6 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, HistoryActivity.class);
                 int userId = userData.getLoggedIn().getId();
                 intent2.putExtra("userId", userData.getLoggedIn().getId());
-                intent2.putExtra("listTransaction", (Parcelable) transactionData.getListPersonTransaction(userId));
                 startActivity(intent2);
                 Log.wtf("test", "Masuk History");
                 break;

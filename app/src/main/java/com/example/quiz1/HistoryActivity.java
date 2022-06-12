@@ -18,6 +18,7 @@ import com.example.quiz1.data.TransactionData;
 import com.example.quiz1.data.UserData;
 import com.example.quiz1.models.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -28,7 +29,6 @@ public class HistoryActivity extends AppCompatActivity {
     TextView tvIdTransaction, tvNameTransaction, tvDateTransaction, tvQuantityTransaction, TvTotalTransaction;
     TransactionAdapter transactionAdapter;
     UserData userData;
-    Vector<Transaction> vectPersonal = new Vector<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +38,11 @@ public class HistoryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int userId = intent.getIntExtra("userId", 0);
-        List listTransaction = intent.getParcelableArrayListExtra("listTransaction");
-
-
+        Log.wtf("intent", String.valueOf(userId));
 
         transactionData = new TransactionData();
-
         rvTransaction = findViewById(R.id.rvTransaction);
-//        for (int i = 0 ; i < transactionData.getListPersonTransaction(userId).size() ; i++) {
-//            vectPersonal.add(transactionData.getListPersonTransaction(userId).get(i));
-//            transactionData.getListPersonTransaction(userId).get(i).getId();
-//        }
-        transactionAdapter = new TransactionAdapter(listTransaction);
+        transactionAdapter = new TransactionAdapter(transactionData.getListPersonTransaction(userId));
         rvTransaction.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvTransaction.setAdapter(transactionAdapter);
     }
@@ -69,6 +62,11 @@ public class HistoryActivity extends AppCompatActivity {
                 Log.wtf("test", "Masuk Home");
                 break;
             case R.id.profile :
+                Intent intent = new Intent(this, ProfileActivity.class);
+                intent.putExtra("username", userData.getLoggedIn().getUsername());
+                intent.putExtra("email", userData.getLoggedIn().getEmailAddress());
+                intent.putExtra("phone", userData.getLoggedIn().getPhoneNum());
+                startActivity(intent);
                 startActivity(new Intent(HistoryActivity.this, ProfileActivity.class));
                 Log.wtf("test", "Masuk Profile");
                 break;
