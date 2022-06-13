@@ -10,11 +10,11 @@ public class Furniture {
     private String name;
     private double rating;
     private int price;
-    private int image;
+    private String image;
     private String description;
 
 
-    public Furniture(int id, String name, double rating, int price, int image, String description) {
+    public Furniture(int id, String name, Double rating, int price, String image, String description) {
         Id = id;
         this.name = name;
         this.rating = rating;
@@ -55,11 +55,11 @@ public class Furniture {
         this.price = price;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
