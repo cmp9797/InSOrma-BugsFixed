@@ -1,12 +1,17 @@
 package com.example.quiz1.adapter;
 
+<<<<<<< HEAD
 import android.content.Context;
+=======
+
+>>>>>>> a128f7bc65b17269313b6f792707dd1b4b72aaba
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,8 +24,12 @@ import java.util.Vector;
 
 public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.ViewHolder> {
 
+<<<<<<< HEAD
     Context context;
     private Vector<Furniture> vectFurniture = new Vector<>();
+=======
+    private RecyclerViewClickListener listener;
+>>>>>>> a128f7bc65b17269313b6f792707dd1b4b72aaba
 
     public FurnitureAdapter(Context context, Vector<Furniture> vectFurniture) {
         this.vectFurniture = vectFurniture;
@@ -45,7 +54,15 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
         holder.name.setText(vectFurniture.get(position).getName());
         holder.rating.setRating((float) vectFurniture.get(position).getRating());
         holder.price.setText(String.valueOf(vectFurniture.get(position).getPrice()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -57,6 +74,7 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
         ImageView picture;
         TextView name, price;
         RatingBar rating;
+        TextView itemSelected;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,6 +83,11 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
             name = itemView.findViewById(R.id.tvNameListFurniture);
             rating = itemView.findViewById(R.id.rbListFurniture);
             price = itemView.findViewById(R.id.tvPriceListFurniture);
+
         }
+    }
+
+    public interface  RecyclerViewClickListener{
+        void onClick(View view, int position);
     }
 }

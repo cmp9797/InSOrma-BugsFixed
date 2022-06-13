@@ -22,17 +22,6 @@ public class TransactionData {
         vectTransaction.add(new Transaction(9, 2, 4, "01/04/2022", 1));
         vectTransaction.add(new Transaction(10, 1, 5, "31/03/2022", 1));
 
-//        vectTransaction.add(new Transaction(1, "Couch", 1, 1500000, "29/03/2022"));
-//        vectTransaction.add(new Transaction(2, "Couch", 1, 1500000, "02/04/2022"));
-//        vectTransaction.add(new Transaction(3, "Nightstand", 3, 2400000, "25/03/2022"));
-//        vectTransaction.add(new Transaction(4, "Garden Chair", 4, 1800000, "25/03/2022"));
-//        vectTransaction.add(new Transaction(5, "Cupboard", 1, 1250000, "28/03/2022"));
-//        vectTransaction.add(new Transaction(6, "Couch", 1, 1500000, "27/03/2022"));
-//        vectTransaction.add(new Transaction(7, "Garden Chair", 2, 900000, "01/04/2022"));
-//        vectTransaction.add(new Transaction(8, "Couch", 1, 1500000, "02/04/2022"));
-//        vectTransaction.add(new Transaction(9, "Nightstand", 1, 800000, "01/04/2022"));
-//        vectTransaction.add(new Transaction(10, "Cupboard", 1, 1250000, "31/03/2022"));
-
     }
 
     public Vector<Transaction> getVectTransaction() {
@@ -40,13 +29,14 @@ public class TransactionData {
     }
 
     public List<Transaction> getListPersonTransaction(int userId) {
-        for(int i = 0 ; i < vectTransaction.size() ; i++) {
-            if (vectTransaction.get(i).getUserId() == userId) {
-                int tempId = vectTransaction.get(1).getId();
-                int tempUserId = vectTransaction.get(i).getUserId();
-                int tempProductId = vectTransaction.get(i).getProductId();
-                String tempDate = vectTransaction.get(i).getTransactionDate();
-                int tempQuantity = vectTransaction.get(i).getQuantity();
+
+        for ( Transaction transaction : vectTransaction ) {
+            if (transaction.getUserId() == userId) {
+                int tempId = transaction.getId();
+                int tempUserId = transaction.getUserId();
+                int tempProductId = transaction.getProductId();
+                String tempDate = transaction.getTransactionDate();
+                int tempQuantity = transaction.getQuantity();
                 listPersonTransaction.add(new Transaction(tempId, tempUserId, tempProductId, tempDate, tempQuantity));
             }
         }
