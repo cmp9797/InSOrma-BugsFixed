@@ -36,7 +36,6 @@ public class RegisterFragment extends Fragment {
 
     EditText edtEmailAddress, edtUsername, edtPhoneNum, edtPassword;
     Button btnRegister;
-    TextView tvRedirectRegister;
     UserData userData;
 
     @Override
@@ -62,10 +61,10 @@ public class RegisterFragment extends Fragment {
         edtPassword = view.findViewById(R.id.edtPasswordRegister);
         btnRegister = view.findViewById(R.id.buttonRegister);
 
-        edtUsername.setText("xcom");
-        edtEmailAddress.setText("x.com");
-        edtPhoneNum.setText("123");
-        edtPassword.setText("x1");
+//        edtUsername.setText("xcom");
+//        edtEmailAddress.setText("x.com");
+//        edtPhoneNum.setText("123");
+//        edtPassword.setText("x1");
 
         btnRegister.setOnClickListener(v -> {
             boolean flag = true;

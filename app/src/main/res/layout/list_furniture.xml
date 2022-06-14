@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/listFurniture"
     android:layout_width="match_parent"
-    android:layout_height="160dp">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:padding="5dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ivListFurniture"
@@ -30,40 +28,70 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/tvNameListFurniture"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="Furniture Name"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/ivListFurniture"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/ivListFurniture"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <RatingBar
-                android:id="@+id/rbListFurniture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:contentDescription="rating"
-                android:labelFor="@id/rbListFurniture"
-                android:progressTint="#FFC107"
-                android:rating="4.5"
-                app:layout_constraintStart_toEndOf="@+id/ivListFurniture"
-                app:layout_constraintTop_toBottomOf="@+id/tvPriceListFurniture" />
+                <TextView
+                    android:id="@+id/tvNameListFurniture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Furniture Name"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvPriceListFurniture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:text="Rp. 2.000.000-,"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/ivListFurniture"
-                app:layout_constraintTop_toBottomOf="@+id/tvNameListFurniture" />
+                <TextView
+                    android:id="@+id/tvPriceListFurniture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="4.5"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toEndOf="@+id/ivListFurniture" />
+
+                <TextView
+                    android:id="@+id/tvRatingListFurniture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Rp. 2.000.000-,"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toEndOf="@+id/ivListFurniture" />
+
+                <TextView
+                    android:id="@+id/tvDescriptionListFurniture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="this is furniturehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+                    android:textSize="18sp"
+                    android:maxWidth="250dp"
+                    app:layout_constraintStart_toEndOf="parent"/>
+
+                <!--            <RatingBar-->
+                <!--                android:id="@+id/rbListFurniture"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginStart="20dp"-->
+                <!--                android:contentDescription="rating"-->
+                <!--                android:labelFor="@id/rbListFurniture"-->
+                <!--                android:progressTint="#FFC107"-->
+                <!--                android:rating="4.5"-->
+                <!--                app:layout_constraintStart_toEndOf="@+id/ivListFurniture"-->
+                <!--                app:layout_constraintTop_toBottomOf="@+id/tvRatingListFurniture" />-->
+
+
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

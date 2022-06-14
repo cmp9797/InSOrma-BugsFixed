@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     TransactionData transactionData;
     RecyclerView rvFurniture;
     FurnitureAdapter furnitureAdapter;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
                 Log.wtf("test", "Masuk Home");
                 break;
             case R.id.profile :
-                Intent intent = new Intent(this, ProfileActivity.class);
+                intent = new Intent(this, ProfileActivity.class);
                 intent.putExtra("username", userData.getLoggedIn().getUsername());
                 intent.putExtra("email", userData.getLoggedIn().getEmailAddress());
                 intent.putExtra("phone", userData.getLoggedIn().getPhoneNum());
@@ -113,12 +114,15 @@ public class HomeActivity extends AppCompatActivity {
                 Log.wtf("test", "Masuk Profile");
                 break;
             case R.id.history :
-                Intent intent2 = new Intent(this, HistoryActivity.class);
+                intent = new Intent(this, HistoryActivity.class);
                 int userId = userData.getLoggedIn().getId();
-                intent2.putExtra("userId", userData.getLoggedIn().getId());
-                startActivity(intent2);
+                intent.putExtra("userId", userData.getLoggedIn().getId());
+                startActivity(intent);
                 Log.wtf("test", "Masuk History");
                 break;
+            case R.id.about :
+                intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
