@@ -88,8 +88,6 @@ public class HomeActivity extends AppCompatActivity {
 
         rvFurniture.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvFurniture.setAdapter(furnitureAdapter);
-
-
     }
 
     @Override

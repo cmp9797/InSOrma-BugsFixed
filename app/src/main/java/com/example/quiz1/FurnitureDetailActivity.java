@@ -2,6 +2,7 @@ package com.example.quiz1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -29,7 +30,12 @@ public class FurnitureDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_furniture_detail);
 
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+
         tvDetailName = findViewById(R.id.tvDetailName);
+        tvDetailName.setText(name);
+
         tvDetailPrice = findViewById(R.id.tvDetailPrice);
         rbDetail = findViewById(R.id.rbDetail);
         edtDetailQuantity = findViewById(R.id.edtDetailQuantity);
@@ -41,7 +47,7 @@ public class FurnitureDetailActivity extends AppCompatActivity {
 
             if (Integer.parseInt(buyQuantity) > 0) {
                 //intent item selected
-//                vectNewTransaction.add(//element item selected)
+//                vectNewTransaction.add();
 //                transactionData.setVectTransaction(vectNewTransaction);
             }
         });

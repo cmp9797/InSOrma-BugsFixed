@@ -1,17 +1,18 @@
 package com.example.quiz1.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.quiz1.FurnitureDetailActivity;
 import com.example.quiz1.R;
 import com.example.quiz1.models.Furniture;
 
@@ -20,8 +21,7 @@ import java.util.Vector;
 public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.ViewHolder> {
 
     Context context;
-    private Vector<Furniture> vectFurniture = new Vector<>();
-    private RecyclerViewClickListener listener;
+    private final Vector<Furniture> vectFurniture;
 
     public FurnitureAdapter(Context context, Vector<Furniture> vectFurniture) {
         this.vectFurniture = vectFurniture;
@@ -45,14 +45,16 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
 
         holder.name.setText(vectFurniture.get(position).getName());
 //        holder.ratingrb.setRating((float) vectFurniture.get(position).getRating());
-        holder.price.setText("$" + String.valueOf(vectFurniture.get(position).getPrice()));
+        holder.price.setText("$" + vectFurniture.get(position).getPrice());
         holder.rating.setText(String.valueOf(vectFurniture.get(position).getRating()));
         holder.description.setText(vectFurniture.get(position).getDescription());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
+        String name = vectFurniture.get(position).getName();
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, FurnitureDetailActivity.class);
+            intent.putExtra("name", name);
+            context.startActivity(intent);
         });
     }
 
@@ -81,9 +83,5 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
             description = itemView.findViewById(R.id.tvDescriptionListFurniture);
 
         }
-    }
-
-    public interface  RecyclerViewClickListener{
-        void onClick(View view, int position);
     }
 }
