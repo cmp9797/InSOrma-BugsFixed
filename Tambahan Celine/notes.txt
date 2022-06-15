@@ -1,0 +1,6 @@
+kondisi database skrg:
+
+ID	EMAIL		NAMA	PHONE	PASS
+1	x.com		xcom	123	x1
+2	xiulin.com	xiulin	321	xiulin1
+3	intan.com	intan	456	intan1
