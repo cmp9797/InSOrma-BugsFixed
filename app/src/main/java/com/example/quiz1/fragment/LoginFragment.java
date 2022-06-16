@@ -47,8 +47,8 @@ public class LoginFragment extends Fragment {
         edtPassword = view.findViewById(R.id.edtPasswordLogin);
         btnLogin = view.findViewById(R.id.buttonLogin);
 
-//        edtEmailAddress.setText("x.com");
-//        edtPassword.setText("x1");
+        edtEmailAddress.setText("x.com");
+        edtPassword.setText("x1");
 
         btnLogin.setOnClickListener( v -> {
             boolean flag = true;
@@ -63,14 +63,17 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getActivity(), "password can't be empty!", Toast.LENGTH_LONG).show();
                 flag = false;
             } else {
+                int i = 0;
                 for (User check: UserData.getVectUser()) {
                     if (email.equals(check.getEmailAddress()) && password.equals(check.getPassword())) {
                         userData.setLoggedIn(check);
+                        userData.setLoggedInPostition(i);
                         Intent intent = new Intent(getActivity(), HomeActivity.class);
                         Toast.makeText(getActivity(), "Login is successful!", Toast.LENGTH_LONG).show();
                         getActivity().startActivity(intent);
                         return;
                     }
+                    i++;
                 }
             }
             Toast.makeText(getActivity(), "User not found!", Toast.LENGTH_LONG).show();

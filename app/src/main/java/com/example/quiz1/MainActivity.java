@@ -5,6 +5,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
+import com.example.quiz1.data.UserData;
+import com.example.quiz1.database.UserHelper;
 import com.example.quiz1.fragment.FragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 
@@ -13,10 +15,19 @@ public class MainActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     FragmentAdapter fragmentAdapter;
 
+    UserData userData;
+    UserHelper userHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //load data from database
+//        userHelper = new UserHelper(this);
+//        userHelper.open();
+//        userData.loadData(this);
+//        userHelper.close();
 
         tabLayout = findViewById(R.id.inTabLayout);
         viewPager = findViewById(R.id.inViewPager);

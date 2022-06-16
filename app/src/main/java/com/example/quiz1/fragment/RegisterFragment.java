@@ -61,10 +61,10 @@ public class RegisterFragment extends Fragment {
         edtPassword = view.findViewById(R.id.edtPasswordRegister);
         btnRegister = view.findViewById(R.id.buttonRegister);
 
-//        edtUsername.setText("xcom");
-//        edtEmailAddress.setText("x.com");
-//        edtPhoneNum.setText("123");
-//        edtPassword.setText("x1");
+        edtUsername.setText("xcom");
+        edtEmailAddress.setText("x.com");
+        edtPhoneNum.setText("123");
+        edtPassword.setText("x1");
 
         btnRegister.setOnClickListener(v -> {
             boolean flag = true;
@@ -86,10 +86,19 @@ public class RegisterFragment extends Fragment {
             } else if (username.isEmpty()) {
                 Toast.makeText(getActivity(), "Username can't be empty!", Toast.LENGTH_LONG).show();
                 flag = false;
-            } else if (username.length() < 3 || username.length() > 20) {
-                Toast.makeText(getActivity(), "Username is invalid!", Toast.LENGTH_LONG).show();
+            }
+//            else if (username.length() < 3 || username.length() > 20) {
+//                Toast.makeText(getActivity(), "Username is invalid!", Toast.LENGTH_LONG).show();
+//                flag = false;
+//            }
+            else if (username.length() < 3) {
+                Toast.makeText(getActivity(), "Min 3 characters", Toast.LENGTH_LONG).show();
                 flag = false;
-            } else if (userData.getVectUser().contains(username)) {
+            } else if(username.length() > 20) {
+                Toast.makeText(getActivity(), "Max 20 characters", Toast.LENGTH_LONG).show();
+                flag = false;
+            }
+            else if (userData.getVectUser().contains(username)) {
                 Toast.makeText(getActivity(), "Username must be unique!", Toast.LENGTH_LONG).show();
                 flag = false;
             } else if (phoneNum.isEmpty()){

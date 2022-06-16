@@ -8,13 +8,13 @@ public class Furniture {
 
     private int Id;
     private String name;
-    private double rating;
+    private float rating;
     private int price;
     private String image;
     private String description;
 
 
-    public Furniture(int id, String name, Double rating, int price, String image, String description) {
+    public Furniture(int id, String name, float rating, int price, String image, String description) {
         Id = id;
         this.name = name;
         this.rating = rating;
@@ -39,11 +39,11 @@ public class Furniture {
         this.name = name;
     }
 
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

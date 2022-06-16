@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
                         String desc = c.getString("description");
                         String image = c.getString("image");
                         int priceInt = Integer.parseInt(price);
-                        double ratingInt = Double.parseDouble(rating);
+                        float ratingInt = Float.parseFloat((rating));
 
 //                        furnitureData(i, product_name, ratingInt, price, desc, image);
                         furnitureData = new FurnitureData(i, product_name, ratingInt, priceInt, image, desc);

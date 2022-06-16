@@ -2,10 +2,12 @@ package com.example.quiz1.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,14 +48,25 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
         holder.name.setText(vectFurniture.get(position).getName());
 //        holder.ratingrb.setRating((float) vectFurniture.get(position).getRating());
         holder.price.setText("$" + vectFurniture.get(position).getPrice());
-        holder.rating.setText(String.valueOf(vectFurniture.get(position).getRating()));
+        holder.ratingBar.setRating(vectFurniture.get(position).getRating());
+//        holder.rating.setText(String.valueOf(vectFurniture.get(position).getRating()));
         holder.description.setText(vectFurniture.get(position).getDescription());
 
+        int id = vectFurniture.get(position).getId();
         String name = vectFurniture.get(position).getName();
+        String description = vectFurniture.get(position).getDescription();
+        String image = vectFurniture.get(position).getImage();
+        int price = vectFurniture.get(position).getPrice();
+        float rating = vectFurniture.get(position).getRating();
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, FurnitureDetailActivity.class);
+            intent.putExtra("id", id);
             intent.putExtra("name", name);
+            intent.putExtra("desc", description);
+            intent.putExtra("image", image);
+            intent.putExtra("price", price);
+            intent.putExtra("rating", rating);
             context.startActivity(intent);
         });
     }
@@ -69,7 +82,7 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
 
         ImageView picture;
         TextView name, price, rating, description;
-//        RatingBar ratingrb;
+        RatingBar ratingBar;
 //        TextView itemSelected;
 
         public ViewHolder(@NonNull View itemView) {
@@ -78,7 +91,8 @@ public class FurnitureAdapter extends RecyclerView.Adapter<FurnitureAdapter.View
             picture = itemView.findViewById(R.id.ivListFurniture);
             name = itemView.findViewById(R.id.tvNameListFurniture);
 //            ratingrb = itemView.findViewById(R.id.rbListFurniture);
-            rating = itemView.findViewById(R.id.tvRatingListFurniture);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
+//            rating = itemView.findViewById(R.id.tvRatingListFurniture);
             price = itemView.findViewById(R.id.tvPriceListFurniture);
             description = itemView.findViewById(R.id.tvDescriptionListFurniture);
 

@@ -9,7 +9,7 @@ import java.util.Vector;
 public class FurnitureData {
     private static Vector<Furniture> vectFurniture = new Vector<Furniture>();
 
-    public FurnitureData(int id, String name, double rating, int price, String image, String description) {
+    public FurnitureData(int id, String name, float rating, int price, String image, String description) {
 
         vectFurniture.add(new Furniture(id, name, rating, price, image, description));
 
