@@ -1,9 +1,13 @@
 package com.example.quiz1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +53,13 @@ public class FurnitureDetailActivity extends AppCompatActivity {
                 //intent item selected
 //                vectNewTransaction.add();
 //                transactionData.setVectTransaction(vectNewTransaction);
+
+//                if(ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_DENIED){
+//                    ActivityCompat.requestPermissions(this,new String[] { Manifest.permission.SEND_SMS }, 123);
+//                }
+
+//                SmsManager manager = SmsManager.getDefault();
+//                manager.sendTextMessage(phone, null, message, null, null);
             }
         });
     }

@@ -1,15 +1,10 @@
 package com.example.quiz1.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,26 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.quiz1.HistoryActivity;
-import com.example.quiz1.HomeActivity;
-import com.example.quiz1.MainActivity;
-import com.example.quiz1.ProfileActivity;
 import com.example.quiz1.R;
 import com.example.quiz1.data.UserData;
+import com.example.quiz1.helper.UserHelper;
 import com.example.quiz1.models.User;
-import com.google.android.material.tabs.TabLayout;
-
-import org.w3c.dom.Text;
-
 
 public class RegisterFragment extends Fragment {
 
     EditText edtEmailAddress, edtUsername, edtPhoneNum, edtPassword;
     Button btnRegister;
     UserData userData;
+
+    private UserHelper userHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +49,7 @@ public class RegisterFragment extends Fragment {
         edtPhoneNum = view.findViewById(R.id.edtPhoneRegister);
         edtPassword = view.findViewById(R.id.edtPasswordRegister);
         btnRegister = view.findViewById(R.id.buttonRegister);
+        userHelper = new UserHelper(getActivity());
 
 //        edtUsername.setText("xcom");
 //        edtEmailAddress.setText("x.com");
@@ -68,6 +58,9 @@ public class RegisterFragment extends Fragment {
 
         btnRegister.setOnClickListener(v -> {
             boolean flag = true;
+
+            userHelper.open();
+            userHelper.viewUsers();
 
             String email = edtEmailAddress.getText().toString();
             String username = edtUsername.getText().toString();
@@ -114,27 +107,26 @@ public class RegisterFragment extends Fragment {
             }
 
             if (flag == true) {
+//                Log.e("Message", "True");
 
-                int id;
-                if (userData.getVectUser().isEmpty()) {
-                    id = 1;
-                } else {
-                    id = userData.getVectUser().lastElement().getId() + 1;
-                }
+//                int id;
+//                if (userData.getVectUser().isEmpty()) {
+//                    id = 1;
+//                } else {
+//                    id = userData.getVectUser().lastElement().getId() + 1;
+//                }
 
-                User userAdded = new User(id, email, username, phoneNum, password);
-                userData.getVectUser().add(userAdded);
+//                User userAdded = new User(id, email, username, phoneNum, password);
+//                userData.getVectUser().add(userAdded);
+
+                userHelper.insertNew(email, username, phoneNum, password);
+
                 Toast.makeText(getActivity(), "Succesfully Registered!", Toast.LENGTH_LONG).show();
 
 //                FragmentTransaction ft = getFragmentManager().beginTransaction().replace(R.id.inViewPager, new LoginFragment());
 //                ft.commit();
-
-
             }
-
+            userHelper.close();
         });
-
     }
-
-
 }

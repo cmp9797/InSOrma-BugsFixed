@@ -18,7 +18,11 @@ import android.widget.Toast;
 import com.example.quiz1.HomeActivity;
 import com.example.quiz1.R;
 import com.example.quiz1.data.UserData;
+import com.example.quiz1.helper.UserHelper;
 import com.example.quiz1.models.User;
+
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class LoginFragment extends Fragment {
 
@@ -26,10 +30,12 @@ public class LoginFragment extends Fragment {
     Button btnLogin;
     UserData userData;
 
+    private UserHelper userHelper;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        userHelper = new UserHelper(getActivity());
     }
 
     @Override
@@ -52,6 +58,10 @@ public class LoginFragment extends Fragment {
 
         btnLogin.setOnClickListener( v -> {
             boolean flag = true;
+
+            userHelper.open();
+            userHelper.viewUsers();
+//            userHelper.close();
 
             String email = edtEmailAddress.getText().toString();
             String password = edtPassword.getText().toString();

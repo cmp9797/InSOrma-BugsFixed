@@ -24,6 +24,7 @@ import com.example.quiz1.adapter.FurnitureAdapter;
 import com.example.quiz1.data.FurnitureData;
 import com.example.quiz1.data.TransactionData;
 import com.example.quiz1.data.UserData;
+import com.example.quiz1.helper.FurnitureHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,10 +34,10 @@ public class HomeActivity extends AppCompatActivity {
 
     FurnitureData furnitureData;
     UserData userData;
-    TransactionData transactionData;
     RecyclerView rvFurniture;
     FurnitureAdapter furnitureAdapter;
     Intent intent;
+    FurnitureHelper furnitureHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         setTitle("Hi " + userData.getLoggedIn().getUsername() + "!");
 
+        furnitureHelper = new FurnitureHelper(this);
+        furnitureHelper.open();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         final String url = "https://mocki.io/v1/5f379081-2473-4494-9cc3-9e808772dc54";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -61,8 +64,12 @@ public class HomeActivity extends AppCompatActivity {
                         int priceInt = Integer.parseInt(price);
                         double ratingInt = Double.parseDouble(rating);
 
+
+                        furnitureHelper.saveProducts(i,product_name, ratingInt, priceInt, image, desc);
+
+
 //                        furnitureData(i, product_name, ratingInt, price, desc, image);
-                        furnitureData = new FurnitureData(i, product_name, ratingInt, priceInt, image, desc);
+//                        furnitureData = new FurnitureData(i, product_name, ratingInt, priceInt, image, desc);
 
                     }
 
@@ -81,10 +88,12 @@ public class HomeActivity extends AppCompatActivity {
 
 //        furnitureData = new FurnitureData();
 
+
+//        furnitureHelper.close();
         requestQueue.add(jsonObjectRequest);
 
         rvFurniture = findViewById(R.id.rvFurniture);
-        furnitureAdapter = new FurnitureAdapter(this, FurnitureData.getVectFurniture());
+        furnitureAdapter = new FurnitureAdapter(this, furnitureData.getVectFurniture());
 
         rvFurniture.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvFurniture.setAdapter(furnitureAdapter);

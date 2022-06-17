@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.quiz1.data.UserData;
 import com.example.quiz1.fragment.FragmentAdapter;
 import com.example.quiz1.fragment.LoginFragment;
+import com.example.quiz1.helper.UserHelper;
 import com.example.quiz1.models.User;
 
 import java.util.Vector;
@@ -30,7 +31,8 @@ public class ProfileActivity extends AppCompatActivity {
     TextView tvUsernameProfile, tvEmailProfile, tvPhoneProfile;
     Button btnEdit, btnDelete, btnLogout, btnSave;
     UserData userData;
-    Vector<User> vectUser = UserData.getVectUser();
+    Vector<User> vectUser = userData.getVectUser();
+    UserHelper userHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,28 +72,39 @@ public class ProfileActivity extends AppCompatActivity {
             btnEdit.setVisibility(View.VISIBLE);
             btnSave.setVisibility(View.GONE);
 
-            edtNewUsername.setVisibility(View.GONE);
             String newUsername = edtNewUsername.getText().toString();
+            edtNewUsername.setVisibility(View.GONE);
+
+            userHelper = new UserHelper(this);
 
             // Code dibawah akan digunakan untuk menginput data hasil edit profile ke database
             // =============================================================================
 
+            userHelper.open();
+            userHelper.updateProfile(newUsername,email, phone);
+            userHelper.close();
 
+            userData.getLoggedIn().setUsername(newUsername);
 
             // ==============================================================================
 
-
+//            username = newUsername;
+            tvUsernameProfile.setText(newUsername);
             tvUsernameProfile.setVisibility(View.VISIBLE);
+            setTitle("Hi " + userData.getLoggedIn().getUsername() + "!");
         });
 
 
         btnDelete.setOnClickListener(v -> {
-            for (User allUser: vectUser) {
-                if (allUser.getUsername().equals(UserData.getLoggedIn().getUsername())) {
-                    Toast.makeText(getApplicationContext(), "User " + UserData.getLoggedIn().getUsername() + " is Deleted!", Toast.LENGTH_LONG).show();
-                    UserData.setLoggedIn(null);
-                    vectUser.remove(allUser.getId() - 1);
+            for (User User: vectUser) {
+                if (User.getEmailAddress().equals(email) && User.getPhoneNum().equals(phone)) {
+//                    Log.e("Message", ""+ User.getEmailAddress() +"");
+//                    Toast.makeText(getApplicationContext(), "User " + UserData.getLoggedIn().getUsername() + " is Deleted!", Toast.LENGTH_LONG).show();
+//                    userHelper.deleteProfile(email, phone);
                     Intent intent1 = new Intent(this, MainActivity.class);
+//                    UserData.setLoggedIn(null);
+//                    vectUser.remove(User);
+//                    UserData.getVectUser().remove(User);
                     startActivity(intent1);
                     break;
                 }

@@ -1,5 +1,7 @@
 package com.example.quiz1.data;
 
+import android.util.Log;
+
 import com.android.volley.RequestQueue;
 import com.example.quiz1.R;
 import com.example.quiz1.models.Furniture;
@@ -12,6 +14,7 @@ public class FurnitureData {
     public FurnitureData(int id, String name, double rating, int price, String image, String description) {
 
         vectFurniture.add(new Furniture(id, name, rating, price, image, description));
+        Log.e("Message", "Ini masuk ke vector");
 
 //        vectFurniture.add(new Furniture(1, "Couch", 4.8, 1500000, R.drawable.furniture1, "Double size pastel couch"));
 //        vectFurniture.add(new Furniture(2, "Garden Chair", 4.5, 450000, R.drawable.furniture2, "Single wooden outdoor chair"));
