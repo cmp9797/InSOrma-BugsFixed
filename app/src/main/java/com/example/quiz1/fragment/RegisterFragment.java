@@ -50,6 +50,12 @@ public class RegisterFragment extends Fragment {
         btnRegister = view.findViewById(R.id.buttonRegister);
         userHelper = new UserHelper(getActivity());
 
+
+        edtEmailAddress.setText("h.com");
+        edtUsername.setText("hhh");
+        edtPhoneNum.setText("123");
+        edtPassword.setText("H12");
+
         btnRegister.setOnClickListener(v -> {
             boolean flag = true;
 

@@ -1,4 +1,5 @@
 package com.example.quiz1.data;
+
 import com.example.quiz1.models.User;
 
 import java.util.Vector;
@@ -11,20 +12,16 @@ public class UserData {
         return vectUser;
     }
 
+    public void removeVectUser(){
+        vectUser.remove(getLoggedIn());
+    }
+
     public void setVectUser(Vector<User> vectUser) {
         this.vectUser = vectUser;
     }
 
     public static User getLoggedIn() {
         return loggedIn;
-    }
-
-    public void changeUsername(String usernameNew, String email, String phone){
-        for(User user : this.vectUser){
-            if(email.equals(user.getEmailAddress()) && phone.equals(user.getPhoneNum())){
-                user.setUsername(usernameNew);
-            }
-        }
     }
 
     public static void setLoggedIn(User loggedIn) {

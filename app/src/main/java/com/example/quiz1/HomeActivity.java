@@ -34,18 +34,22 @@ public class HomeActivity extends AppCompatActivity {
     FurnitureAdapter furnitureAdapter;
     Intent intent;
     FurnitureHelper furnitureHelper;
+    String emailUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         setTitle("Hi " + userData.getLoggedIn().getUsername() + "!");
+        Log.e("Message", ""+ userData.getLoggedIn().getUsername() +"");
 
         furnitureHelper = new FurnitureHelper(this);
         furnitureHelper.open();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         final String url = "https://mocki.io/v1/5f379081-2473-4494-9cc3-9e808772dc54";
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

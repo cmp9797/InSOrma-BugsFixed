@@ -53,6 +53,9 @@ public class LoginFragment extends Fragment {
         edtPassword = view.findViewById(R.id.edtPasswordLogin);
         btnLogin = view.findViewById(R.id.buttonLogin);
 
+        edtEmailAddress.setText("h.com");
+        edtPassword.setText("H12");
+
         btnLogin.setOnClickListener( v -> {
             boolean flag = true;
 

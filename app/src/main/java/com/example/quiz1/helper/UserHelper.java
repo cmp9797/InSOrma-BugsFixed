@@ -38,6 +38,8 @@ public class UserHelper {
         Cursor cursor = database.rawQuery(query, null);
         cursor.moveToFirst();
 
+//        if(userData.getVectuser().)
+
         int tempID;
         String tempEmail, tempUsername, tempPhoneNumber, tempPassword;
 
@@ -50,7 +52,9 @@ public class UserHelper {
                 tempPassword = cursor.getString(cursor.getColumnIndexOrThrow("UserPassword"));
 
                 user = new User(tempID, tempEmail, tempUsername, tempPhoneNumber, tempPassword);
+
                 userData.getVectUser().add(user);
+
                 cursor.moveToNext();
             } while (!cursor.isAfterLast());
         }
@@ -82,10 +86,10 @@ public class UserHelper {
     public void updateProfile(String usernameNew, String userEmailNew, String userPhoneNew){
         String query = "UPDATE Users SET UserUsername = '"+ usernameNew +"' WHERE UserEmailAddress = '"+ userEmailNew +"' AND UserPhoneNumber = '"+ userPhoneNew +"'";
         database.execSQL(query);
-//        userData.changeUsername(usernameNew, userEmailNew, userPhoneNew);
     }
 
     public void deleteProfile(String userEmailNew, String userPhoneNew){
+        Log.e("Message", "Ini jalan dari deleteprofile");
         String query = "DELETE FROM Users WHERE UserEmailAddress = '"+ userEmailNew +"' AND UserPhoneNumber = '"+ userPhoneNew +"'";
         database.execSQL(query);
     }
