@@ -11,6 +11,7 @@ public class TransactionData {
     private List<Transaction> listPersonTransaction = new ArrayList<>();
 
     public TransactionData() {
+        //add to database
         vectTransaction.add(new Transaction(1, 1, 1, "29/03/2022", 1));
         vectTransaction.add(new Transaction(2, 3, 1, "02/04/2022", 1));
         vectTransaction.add(new Transaction(3, 1, 4, "25/03/2022", 3));
@@ -50,5 +51,10 @@ public class TransactionData {
 
     public void setVectTransaction(Vector<Transaction> vectTransaction) {
         this.vectTransaction = vectTransaction;
+    }
+
+    public int getSize() {
+        int size = vectTransaction.size();
+        return size;
     }
 }

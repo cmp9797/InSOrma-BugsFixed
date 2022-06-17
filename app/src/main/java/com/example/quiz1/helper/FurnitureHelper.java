@@ -23,7 +23,6 @@ public class FurnitureHelper {
     }
 
     public void open() throws SQLException{
-
         databaseHelper = new DatabaseHelper(context);
         database = databaseHelper.getWritableDatabase();
     }
@@ -33,56 +32,19 @@ public class FurnitureHelper {
     }
 
     public void saveProducts(int i, String name, double rating, int price, String image, String description){
-//        Vector<Furniture> furnitureVector = furnitureData.getVectFurniture();
-//        for(Furniture furniture : furnitureVector){
-//            String name = furniture.getName();
-//            Double rating = furniture.getRating();
-//            int price = furniture.getPrice();
-//            String description = furniture.getDescription();
-//            String image = furniture.getImage();
-//            String query="INSERT INTO Products " +
-//                    "VALUES('"+ name +"', " +
-//                    "'"+ rating +"', " +
-//                    "'"+ price +"', " +
-//                    "'"+ image +"', " +
-//                    "'"+ description +"'" +
-//                    ")";
-//            database.execSQL(query);
-//        }
+        Log.e("Message", "Ini masuk ke save products2");
 
-        String query = "SELECT * FROM Products";
+        furnitureData = new FurnitureData(i, name, rating, price, image, description);
 
-//        Cursor cursor = database.rawQuery(query, null);
-//
-//        if(cursor!=null && cursor.moveToLast()){
-//            Log.e("Message", "Ini masuk ke save products1");
-//            furnitureData = new FurnitureData(i, name, rating, price, image, description);
-//
-//            query="INSERT INTO Products" +
-//                    "(ProductName, " +
-//                    "ProductRating, ProductPrice, ProductImage, ProductDescription) " +
-//                    "VALUES('"+ name +"'," +
-//                    "'"+ rating +"'," +
-//                    "'"+ price +"'," +
-//                    "'"+ image +"'," +
-//                    "'"+ description +"'" +
-//                    ")";
-//            database.execSQL(query);
-//        } else {
-            Log.e("Message", "Ini masuk ke save products2");
-            furnitureData = new FurnitureData(i, name, rating, price, image, description);
-
-            query="INSERT OR REPLACE INTO Products" +
-                    "(ProductName, " +
-                    "ProductRating, ProductPrice, ProductImage, ProductDescription) " +
-                    "VALUES('"+ name +"'," +
-                    "'"+ rating +"'," +
-                    "'"+ price +"'," +
-                    "'"+ image +"'," +
-                    "'"+ description +"'" +
-                    ")";
-            database.execSQL(query);
-//        }
-//        cursor.close();
+        String query="INSERT OR REPLACE INTO Products" +
+                "(ProductName, " +
+                "ProductRating, ProductPrice, ProductImage, ProductDescription) " +
+                "VALUES('"+ name +"'," +
+                "'"+ rating +"'," +
+                "'"+ price +"'," +
+                "'"+ image +"'," +
+                "'"+ description +"'" +
+                ")";
+        database.execSQL(query);
     }
 }

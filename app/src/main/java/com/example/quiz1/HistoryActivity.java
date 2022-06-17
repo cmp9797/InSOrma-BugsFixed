@@ -24,64 +24,68 @@ import java.util.Vector;
 
 public class HistoryActivity extends AppCompatActivity {
 
-    TransactionData transactionData;
+//    TransactionData transactionData ;
     RecyclerView rvTransaction;
     TextView tvIdTransaction, tvNameTransaction, tvDateTransaction, tvQuantityTransaction, TvTotalTransaction;
     TransactionAdapter transactionAdapter;
     UserData userData;
+//    Vector<Transaction> vectTrans = new Vector<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         setTitle("Hi " + userData.getLoggedIn().getUsername() + "!");
-
-        Intent intent = getIntent();
-        int userId = intent.getIntExtra("userId", 0);
-        Log.wtf("intent", String.valueOf(userId));
-
-        transactionData = new TransactionData();
-        rvTransaction = findViewById(R.id.rvTransaction);
-        transactionAdapter = new TransactionAdapter(transactionData.getListPersonTransaction(userId));
-        rvTransaction.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        rvTransaction.setAdapter(transactionAdapter);
+//
+//        Intent intent = getIntent();
+//        int userId = intent.getIntExtra("userId", 0);
+//        Log.wtf("intent", String.valueOf(userId));
+//
+//        transactionData = new TransactionData();
+//        rvTransaction = findViewById(R.id.rvTransaction);
+//        transactionAdapter = new TransactionAdapter(transactionData.getListPersonTransaction(userId));
+//        rvTransaction.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//        rvTransaction.setAdapter(transactionAdapter);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home :
-                startActivity(new Intent(HistoryActivity.this, HomeActivity.class));
-                Log.wtf("test", "Masuk Home");
-                break;
-            case R.id.profile :
-                Intent intent = new Intent(this, ProfileActivity.class);
-                intent.putExtra("username", userData.getLoggedIn().getUsername());
-                intent.putExtra("email", userData.getLoggedIn().getEmailAddress());
-                intent.putExtra("phone", userData.getLoggedIn().getPhoneNum());
-                startActivity(intent);
-                startActivity(new Intent(HistoryActivity.this, ProfileActivity.class));
-                Log.wtf("test", "Masuk Profile");
-                break;
-            case R.id.history :
-                Log.wtf("test", "Masuk History");
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-    private Object getActivity() {
-        return 3;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        Intent intent;
+//        switch (item.getItemId()) {
+//            case R.id.home :
+//                startActivity(new Intent(HistoryActivity.this, HomeActivity.class));
+//                Log.wtf("test", "Masuk Home");
+//                break;
+//            case R.id.profile :
+//                intent = new Intent(this, ProfileActivity.class);
+//                intent.putExtra("username", userData.getLoggedIn().getUsername());
+//                intent.putExtra("email", userData.getLoggedIn().getEmailAddress());
+//                intent.putExtra("phone", userData.getLoggedIn().getPhoneNum());
+//                startActivity(intent);
+//                Log.wtf("test", "Masuk Profile");
+//                break;
+//            case R.id.history :
+//                Log.wtf("test", "Masuk History");
+//                break;
+//            case R.id.about :
+//                intent = new Intent(this, AboutActivity.class);
+//                startActivity(intent);
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+//
+//
+//
+//    private Object getActivity() {
+//        return 3;
+//    }
 
 }

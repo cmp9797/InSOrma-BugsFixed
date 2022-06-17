@@ -33,7 +33,6 @@ public class UserHelper {
     }
 
     public void viewUsers(){
-//        Vector<User> userVector = new Vector<>();
         String query = "SELECT * FROM Users";
 
         Cursor cursor = database.rawQuery(query, null);
@@ -51,13 +50,11 @@ public class UserHelper {
                 tempPassword = cursor.getString(cursor.getColumnIndexOrThrow("UserPassword"));
 
                 user = new User(tempID, tempEmail, tempUsername, tempPhoneNumber, tempPassword);
-//                userVector.add(user);
                 userData.getVectUser().add(user);
                 cursor.moveToNext();
             } while (!cursor.isAfterLast());
         }
         cursor.close();
-//        return userVector;
     }
 
     public void insertNew(String email, String username, String phoneNumber, String password){

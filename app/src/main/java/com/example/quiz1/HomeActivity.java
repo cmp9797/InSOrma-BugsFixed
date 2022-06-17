@@ -7,13 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,7 +19,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.quiz1.adapter.FurnitureAdapter;
 import com.example.quiz1.data.FurnitureData;
-import com.example.quiz1.data.TransactionData;
 import com.example.quiz1.data.UserData;
 import com.example.quiz1.helper.FurnitureHelper;
 
@@ -47,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
         furnitureHelper = new FurnitureHelper(this);
         furnitureHelper.open();
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         final String url = "https://mocki.io/v1/5f379081-2473-4494-9cc3-9e808772dc54";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -62,15 +59,9 @@ public class HomeActivity extends AppCompatActivity {
                         String desc = c.getString("description");
                         String image = c.getString("image");
                         int priceInt = Integer.parseInt(price);
-                        double ratingInt = Double.parseDouble(rating);
-
+                        double ratingInt = Double.parseDouble((rating));
 
                         furnitureHelper.saveProducts(i,product_name, ratingInt, priceInt, image, desc);
-
-
-//                        furnitureData(i, product_name, ratingInt, price, desc, image);
-//                        furnitureData = new FurnitureData(i, product_name, ratingInt, priceInt, image, desc);
-
                     }
 
                 } catch (JSONException e) {
@@ -86,10 +77,6 @@ public class HomeActivity extends AppCompatActivity {
                 }
         });
 
-//        furnitureData = new FurnitureData();
-
-
-//        furnitureHelper.close();
         requestQueue.add(jsonObjectRequest);
 
         rvFurniture = findViewById(R.id.rvFurniture);
@@ -131,13 +118,6 @@ public class HomeActivity extends AppCompatActivity {
                 intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
         }
-
         return super.onOptionsItemSelected(item);
-    }
-
-
-
-    private Object getActivity() {
-        return 3;
     }
 }

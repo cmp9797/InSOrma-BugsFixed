@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Rp. "
+        android:text="$"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -31,29 +31,28 @@
         android:id="@+id/tvDetailPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Furniture Price"
+        android:text="Price"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/tvDetailRupiah"
         app:layout_constraintTop_toTopOf="@+id/tvDetailRupiah" />
 
-    <RatingBar
-        android:id="@+id/rbDetail"
-        style="@style/Widget.AppCompat.RatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:numStars="5"
-        android:progressTint="#FFC107"
-        android:rating="4.5"
-        app:layout_constraintStart_toStartOf="@+id/tvDetailRupiah"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetailRupiah" />
+<!--    <RatingBar-->
+<!--        android:id="@+id/rbDetail"-->
+<!--        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:numStars="5"-->
+<!--        android:progressTint="#FFC107"-->
+<!--        android:rating="4.5"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/imageView"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tvDetailPrice" />-->
 
     <TextView
         android:id="@+id/tvDetailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="Furniture Name"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -70,6 +69,7 @@
         android:ems="10"
         android:hint="ex. 1"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
@@ -87,11 +87,21 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
+        android:layout_marginTop="20dp"
+        android:text="Qty :"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/rbDetail"
-        app:layout_constraintTop_toBottomOf="@+id/rbDetail"
+        app:layout_constraintStart_toStartOf="@+id/tvDetailDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailDescription"
         tools:text="Qty :" />
+
+    <TextView
+        android:id="@+id/tvDetailDescription"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/tvDetailRupiah"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailRupiah" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,9 @@
 package com.example.quiz1;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,8 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quiz1.data.UserData;
-import com.example.quiz1.fragment.FragmentAdapter;
-import com.example.quiz1.fragment.LoginFragment;
 import com.example.quiz1.helper.UserHelper;
 import com.example.quiz1.models.User;
 
@@ -31,8 +22,10 @@ public class ProfileActivity extends AppCompatActivity {
     TextView tvUsernameProfile, tvEmailProfile, tvPhoneProfile;
     Button btnEdit, btnDelete, btnLogout, btnSave;
     UserData userData;
-    Vector<User> vectUser = userData.getVectUser();
     UserHelper userHelper;
+    Intent intent;
+
+    Vector<User> vectUser = userData.getVectUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         setTitle("Hi " + userData.getLoggedIn().getUsername() + "!");
 
-        Intent intent = getIntent();
+        intent = getIntent();
         String username = intent.getStringExtra("username");
         String email = intent.getStringExtra("email");
         String phone = intent.getStringExtra("phone");
@@ -69,31 +62,30 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         btnSave.setOnClickListener(v -> {
-            btnEdit.setVisibility(View.VISIBLE);
-            btnSave.setVisibility(View.GONE);
-
             String newUsername = edtNewUsername.getText().toString();
-            edtNewUsername.setVisibility(View.GONE);
 
             userHelper = new UserHelper(this);
 
-            // Code dibawah akan digunakan untuk menginput data hasil edit profile ke database
-            // =============================================================================
+            if (newUsername.length() < 3 || newUsername.length() > 20) {
+                Toast.makeText(this, "Min 3 characters", Toast.LENGTH_LONG).show();
+            } else if(newUsername.length() > 20) {
+                Toast.makeText(this, "Max 20 characters", Toast.LENGTH_LONG).show();
+            } else {
+                btnEdit.setVisibility(View.VISIBLE);
+                btnSave.setVisibility(View.GONE);
+                edtNewUsername.setVisibility(View.GONE);
+                tvUsernameProfile.setText(newUsername);
 
-            userHelper.open();
-            userHelper.updateProfile(newUsername,email, phone);
-            userHelper.close();
+                userHelper.open();
+                userHelper.updateProfile(newUsername,email, phone);
 
-            userData.getLoggedIn().setUsername(newUsername);
+                Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
+                userData.changeUsername(newUsername, email, phone);
 
-            // ==============================================================================
-
-//            username = newUsername;
-            tvUsernameProfile.setText(newUsername);
-            tvUsernameProfile.setVisibility(View.VISIBLE);
-            setTitle("Hi " + userData.getLoggedIn().getUsername() + "!");
+                tvUsernameProfile.setVisibility(View.VISIBLE);
+                setTitle("Hi " + userData.getLoggedIn().getUsername() + "!");
+            }
         });
-
 
         btnDelete.setOnClickListener(v -> {
             for (User User: vectUser) {
@@ -115,8 +107,8 @@ public class ProfileActivity extends AppCompatActivity {
             Log.wtf("before logout", UserData.getLoggedIn().getUsername());
             Toast.makeText(getApplicationContext(), "Logout From " + UserData.getLoggedIn().getUsername() + " is Successful!", Toast.LENGTH_LONG).show();
             UserData.setLoggedIn(null);
-            Intent intent1 = new Intent(this, MainActivity.class);
-            startActivity(intent1);
+            intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         });
 
 
@@ -176,40 +168,43 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home :
-                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
-                Log.wtf("test", "Masuk Home");
-                break;
-            case R.id.profile :
-                Log.wtf("test", "Masuk Profile");
-                break;
-            case R.id.history :
-                Intent intent2 = new Intent(this, HistoryActivity.class);
-                int userId = userData.getLoggedIn().getId();
-                intent2.putExtra("userId", userData.getLoggedIn().getId());
-                userId = intent2.getIntExtra("userId", 0);
-                startActivity(intent2);
-                startActivity(new Intent(ProfileActivity.this, HistoryActivity.class));
-                Log.wtf("test", "Masuk History");
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-    private Object getActivity() {
-        return 3;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//            case R.id.home :
+//                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+//                Log.wtf("test", "Masuk Home");
+//                break;
+//            case R.id.profile :
+//                Log.wtf("test", "Masuk Profile");
+//                break;
+//            case R.id.history :
+//                intent = new Intent(this, HistoryActivity.class);
+//                int userId = userData.getLoggedIn().getId();
+//                intent.putExtra("userId", userData.getLoggedIn().getId());
+//                userId = intent.getIntExtra("userId", 0);
+//                startActivity(intent);
+//                Log.wtf("test", "Masuk History");
+//                break;
+//            case R.id.about :
+//                intent = new Intent(this, AboutActivity.class);
+//                startActivity(intent);
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+//
+//
+//
+//    private Object getActivity() {
+//        return 3;
+//    }
 }

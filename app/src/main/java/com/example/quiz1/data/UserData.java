@@ -1,6 +1,4 @@
 package com.example.quiz1.data;
-
-import com.example.quiz1.helper.UserHelper;
 import com.example.quiz1.models.User;
 
 import java.util.Vector;
@@ -9,12 +7,10 @@ public class UserData {
     private static Vector<User> vectUser = new Vector<>();
     private static User loggedIn = null;
 
-    // method ini digunakan untuk memanggil vecotr vectuser
     public static Vector<User> getVectUser() {
         return vectUser;
     }
 
-    // method ini digunakan untuk set data user dari db ke vector
     public void setVectUser(Vector<User> vectUser) {
         this.vectUser = vectUser;
     }
@@ -24,7 +20,7 @@ public class UserData {
     }
 
     public void changeUsername(String usernameNew, String email, String phone){
-        for(User user : vectUser){
+        for(User user : this.vectUser){
             if(email.equals(user.getEmailAddress()) && phone.equals(user.getPhoneNum())){
                 user.setUsername(usernameNew);
             }
@@ -35,4 +31,23 @@ public class UserData {
         UserData.loggedIn = loggedIn;
     }
 
+
+    // ARSIPPP Kode LAMA
+//    public static UserHelper userHelper;
+//    public static int loggedInPostition = -1;
+//    public static  void loadData(Context context){
+//        vectUser = userHelper.getAllUsers(context);
+//    }
+
+//    public static int getLoggedInPostition() {
+//        return loggedInPostition;
+//    }
+
+//    public static void setLoggedInPostition(int loggedInPostition) {
+//        UserData.loggedInPostition = loggedInPostition;
+//    }
+
+    //    public static void setVectUser(Vector<User> vectUser) {
+//        this.vectUser = vectUser;
+//    }
 }

@@ -5,6 +5,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
+import com.example.quiz1.data.UserData;
 import com.example.quiz1.fragment.FragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 
