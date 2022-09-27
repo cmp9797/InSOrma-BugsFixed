@@ -1,2 +1,2 @@
 # InSOrma-BugsFixed
-Projek kesayangan kami
+Aplikasi android penjualan furnitur sederhana.
