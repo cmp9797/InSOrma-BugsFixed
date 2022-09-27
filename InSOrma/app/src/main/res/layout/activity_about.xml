@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <TextView
+        android:id="@+id/txtAbout"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="About InSorma"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtAboutContent"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="InSOrma is an application that provides various kinds of industrial equipment ranging from household appliances to workshop tools. \n\nThe service is based on the Android operating system, which the user will use to see the list of furniture available and buy furniture directly from the application. "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAbout" />
+
+    <Button
+        android:id="@+id/buttonMaps"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:drawableLeft="@drawable/ic_baseline_location_on_24"
+        android:text="See our location!"
+        app:layout_constraintEnd_toEndOf="@+id/txtAboutContent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAboutContent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
